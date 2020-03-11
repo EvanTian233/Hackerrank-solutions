@@ -1,3 +1,2 @@
-# HelloWorld
-This is a test
-oh this is nice
+# Hackerrank
+Stating with Interview Preparation Kit
