@@ -38,3 +38,25 @@ SELECT * FROM CITY
 WHERE COUNTRYCODE = 'JPN';
 
  
+ /*
+ Japanese Cities' Names
+ https://www.hackerrank.com/challenges/japanese-cities-name/problem
+*/
+SELECT NAME FROM CITY
+WHERE COUNTRYCODE = 'JPN';
+
+
+/*
+Weather Observation Station 1
+https://www.hackerrank.com/challenges/weather-observation-station-1/problem
+*/
+SELECT CITY, STATE FROM STATION;
+
+/*
+Weather Observation Station 3
+https://www.hackerrank.com/challenges/weather-observation-station-3/problem
+*/
+SELECT DISTINCT CITY FROM STATION
+WHERE MOD(ID, 2) = 0
+ORDER BY CITY;
+
