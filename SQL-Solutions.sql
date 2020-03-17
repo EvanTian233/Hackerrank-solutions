@@ -70,8 +70,8 @@ SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
 Weather Observation Station 5
 https://www.hackerrank.com/challenges/weather-observation-station-5/problem
 */
-SELECT CITY, LENGTH(CITY)FROM STATION 
+SELECT CITY, LENGTH(CITY) FROM STATION 
 ORDER BY LENGTH(CITY), CITY LIMIT 1; 
 
-select CITY, length(CITY)from station 
-order by length(CITY) desc, city limit 1; `
+select CITY, length(CITY) from station 
+order by length(CITY) desc, city limit 1; 
