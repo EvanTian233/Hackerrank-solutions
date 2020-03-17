@@ -60,3 +60,18 @@ SELECT DISTINCT CITY FROM STATION
 WHERE MOD(ID, 2) = 0
 ORDER BY CITY;
 
+/*
+Weather Observation Station 4
+https://www.hackerrank.com/challenges/weather-observation-station-4/problem
+*/
+SELECT COUNT(CITY) - COUNT(DISTINCT CITY) FROM STATION;
+
+/*
+Weather Observation Station 5
+https://www.hackerrank.com/challenges/weather-observation-station-5/problem
+*/
+SELECT CITY, LENGTH(CITY)FROM STATION 
+ORDER BY LENGTH(CITY), CITY LIMIT 1; 
+
+select CITY, length(CITY)from station 
+order by length(CITY) desc, city limit 1; `
