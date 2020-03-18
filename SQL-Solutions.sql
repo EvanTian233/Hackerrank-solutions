@@ -75,3 +75,12 @@ ORDER BY LENGTH(CITY), CITY LIMIT 1;
 
 select CITY, length(CITY) from station 
 order by length(CITY) desc, city limit 1; 
+
+/*
+
+Weather Observation Station 6
+
+https://www.hackerrank.com/challenges/weather-observation-station-6/problem
+
+*/
+SELECT DISTINCT city FROM station WHERE city REGEXP "^[aeiou].*";
