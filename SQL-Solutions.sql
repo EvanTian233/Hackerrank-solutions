@@ -116,3 +116,32 @@ Query the list of CITY names from STATION that do not end with vowels. Your resu
 */
 SELECT DISTINCT CITY FROM STATION 
 WHERE CITY NOT REGEXP '[AEIOU]$';
+
+/*
+Weather Observation Station 11
+https://www.hackerrank.com/challenges/weather-observation-station-11/problem
+Query the list of CITY names from STATION that either do not start with vowels or do not end with vowels. Your result cannot contain duplicates.
+*/
+select city from station 
+where city not in (select city from station 
+                   where left(city,1) in ('a','i','u','e','o') 
+                   and right(city,1) in ('a','i','u','e','o')) 
+                   group by city;
+
+
+/*
+Higher Than 75 Marks
+https://www.hackerrank.com/challenges/more-than-75-marks/problem
+Query the Name of any student in STUDENTS who scored higher than 75 Marks. Order your output by the last three characters of each name. If two or more students both have names ending in the same last three characters (i.e.: Bobby, Robby, etc.), secondary sort them by ascending ID.
+*/
+SELECT Name FROM STUDENTS
+WHERE Marks > 75
+ORDER BY RIGHT(NAME, 3), ID ASC;
+
+/*
+Employee Names
+https://www.hackerrank.com/challenges/name-of-employees/problem?h_r=next-challenge&h_v=zen
+Write a query that prints a list of employee names (i.e.: the name attribute) from the Employee table in alphabetical order.
+*/
+SELECT name FROM Employee
+ORDER BY name ASC; 
