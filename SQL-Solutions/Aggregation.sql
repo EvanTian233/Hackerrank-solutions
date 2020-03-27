@@ -60,3 +60,55 @@ https://www.hackerrank.com/challenges/earnings-of-employees/problem
 */
 select (salary * months)as earnings ,count(*) from employee 
 group by 1 order by earnings desc limit 1;
+
+/*
+Weather Observation Station 2
+https://www.hackerrank.com/challenges/weather-observation-station-2/problem?h_r=next-challenge&h_v=zen
+Query the following two values from the STATION table:
+The sum of all values in LAT_N rounded to a scale of 2 decimal places.
+The sum of all values in LONG_W rounded to a scale of 2 decimal places.
+*/
+SELECT ROUND(SUM(LAT_N),2), ROUND(SUM(LONG_W),2) FROM STATION;
+
+/*
+Weather Observation Station 13
+https://www.hackerrank.com/challenges/weather-observation-station-13/problem
+Query the sum of Northern Latitudes (LAT_N) from STATION having values greater than  and less than . Truncate your answer to 4 decimal places.
+*/
+SELECT TRUNCATE(SUM(LAT_N), 4) FROM STATION
+WHERE LAT_N BETWEEN 38.7880 AND 137.2345;
+
+/*
+Weather Observation Station 14
+https://www.hackerrank.com/challenges/weather-observation-station-14/problem
+Query the greatest value of the Northern Latitudes (LAT_N) from STATION that is less than . Truncate your answer to 4 decimal places.
+*/
+SELECT TRUNCATE(MAX(LAT_N),4) FROM STATION
+WHERE LAT_N < 137.2345;
+
+/*
+Weather Observation Station 15
+https://www.hackerrank.com/challenges/weather-observation-station-15/problem
+Query the Western Longitude (LONG_W) for the largest Northern Latitude (LAT_N) in STATION that is less than . Round your answer to 4 decimal places.
+*/
+SELECT ROUND(LONG_W,4) FROM STATION
+WHERE LAT_N = (SELECT MAX(LAT_N) FROM STATION 
+               WHERE LAT_N < 137.2345);
+
+/*
+Weather Observation Station 16
+https://www.hackerrank.com/challenges/weather-observation-station-16/problem
+Query the smallest Northern Latitude (LAT_N) from STATION that is greater than . Round your answer to 4 decimal places.
+*/
+SELECT ROUND(MIN(LAT_N),4) FROM STATION
+WHERE LAT_N > 38.7780;
+
+/*
+Weather Observation Station 17
+https://www.hackerrank.com/challenges/weather-observation-station-17/problem?h_r=next-challenge&h_v=zen
+Query the Western Longitude (LONG_W)where the smallest Northern Latitude (LAT_N) in STATION is greater than . Round your answer to 4 decimal places.
+*/
+SELECT ROUND(LONG_W,4) FROM STATION
+WHERE LAT_N = (SELECT MIN(LAT_N) FROM STATION 
+               WHERE LAT_N > 38.7780);
+               
