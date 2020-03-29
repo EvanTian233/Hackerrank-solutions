@@ -35,3 +35,71 @@ ON city.countrycode = country.code
 GROUP BY country.continent;
 
 
+
+/*
+The Report
+https://www.hackerrank.com/challenges/the-report/problem
+
+
+CASE：
+In MySql, CASE statement acts like a "if" condition, 
+so if the expression after CASE statement matches the boolean value after WHEN clause, 
+it executes the result after THEN clause; otherwise it will execute result after ELSE clause.
+*/
+SELECT (CASE g.grade>=8 WHEN TRUE 
+        THEN s.name ELSE null END),
+        g.grade,s.marks FROM students s 
+        INNER JOIN grades g 
+ON s.marks BETWEEN min_mark AND max_mark 
+ORDER BY g.grade DESC,s.name,s.marks;
+
+
+/*
+Top Competitors
+https://www.hackerrank.com/challenges/full-score/problem
+
+Julia just finished conducting a coding contest, 
+and she needs your help assembling the leaderboard! 
+Write a query to print the respective hacker_id and name of hackers who achieved full scores for more than one challenge. 
+Order your output in descending order by the total number of challenges in which the hacker earned a full score. 
+If more than one hacker received full scores in same number of challenges, then sort them by ascending hacker_id.
+
+*/
+select h.hacker_id, h.name
+from submissions s
+inner join challenges c
+on s.challenge_id = c.challenge_id
+inner join difficulty d
+on c.difficulty_level = d.difficulty_level 
+inner join hackers h
+on s.hacker_id = h.hacker_id
+where s.score = d.score and c.difficulty_level = d.difficulty_level
+group by h.hacker_id, h.name
+having count(s.hacker_id) > 1
+order by count(s.hacker_id) desc, s.hacker_id asc;
+
+
+
+
+/*
+Ollivander's Inventory
+https://www.hackerrank.com/challenges/harry-potter-and-wands/problem
+
+Harry Potter and his friends are at Ollivander's with Ron, finally replacing Charlie's old broken wand.
+Hermione decides the best way to choose is by determining the minimum number of gold galleons needed to buy each non-evil wand of high power and age. 
+Write a query to print the id, age, coins_needed, and power of the wands that Ron's interested in, sorted in order of descending power. 
+If more than one wand has same power, sort the result in order of descending age.
+
+*/
+
+select a.id, b.age, a.coins_needed, a.power 
+from Wands a 
+inner join Wands_Property b 
+on a.code=b.code 
+where b.is_evil!=1 
+and a.coins_needed=(select min(Wands.coins_needed) 
+                    from Wands inner join Wands_Property 
+                    on Wands.code=Wands_Property.code 
+                    where Wands_Property.age=b.age 
+                    and Wands.power=a.power) 
+order by a.power desc,b.age desc;
