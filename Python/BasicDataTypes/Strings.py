@@ -210,3 +210,32 @@ def wrap(string, max_width):
 
 def wrap(string, max_width):
     return "\n".join([string[i:i+max_width] for i in range(0, len(string), max_width)])
+
+
+"""
+Designer Door Mat
+https://www.hackerrank.com/challenges/designer-door-mat/problem
+
+Output Format
+Output the design pattern.
+
+Sample Input
+9 27
+
+Sample Output
+------------.|.------------
+---------.|..|..|.---------
+------.|..|..|..|..|.------
+---.|..|..|..|..|..|..|.---
+----------WELCOME----------
+---.|..|..|..|..|..|..|.---
+------.|..|..|..|..|.------
+---------.|..|..|.---------
+------------.|.------------
+"""
+n, m = map(int,input().split())
+pattern = [('.|.'*(2*i + 1)).center(m, '-') for i in range(n//2)]
+print('\n'.join(pattern + ['WELCOME'.center(m, '-')] + pattern[::-1]))
+
+
+
